@@ -1,0 +1,129 @@
+{
+    "EmployeeID": "",
+    "CountryKey": "",
+    "ListCountry": [
+        {
+            "Key": "US",
+            "Text": "United States"
+        },
+        {
+            "Key": "UK",
+            "Text": "United Kingdom"
+        },
+        {
+            "Key": "ES",
+            "Text": "Spain"
+        },
+        {
+            "Key": "PT",
+            "Text": "Portugal"
+        }
+    ],
+    "Employees":[
+        {
+            "EmployeeID": "1",
+            "LastName": "García Lopez",
+            "FirstName": "Maria",
+            "Country": "ES",
+            "City": "Madrid",
+            "PostalCode": "28021",
+            "Orders":[
+                {
+                    "OrderID": "208",
+                    "Freight": "65",
+                    "ShipAddress": "Calle Alcala"
+                },
+                {
+                    "OrderID": "333",
+                    "Freight": "77",
+                    "ShipAddress": "Calle Alcala"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "2",
+            "LastName": "Antoranz Onrubia",
+            "FirstName": "Veronica",
+            "Country": "ES",
+            "City": "Madrid",
+            "PostalCode": "14490",
+            "Orders":[
+                {
+                    "OrderID": "209",
+                    "Freight": "67",
+                    "ShipAddress": "Calle Sarria"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "3",
+            "LastName": "Pires Guimares",
+            "FirstName": "Sofia",
+            "Country": "PT",
+            "City": "Lisboa",
+            "PostalCode": "28000",
+            "Orders":[
+                {
+                    "OrderID": "204",
+                    "Freight": "33",
+                    "ShipAddress": "Calle Fado"
+                },
+                {
+                    "OrderID": "205",
+                    "Freight": "33",
+                    "ShipAddress": "Calle Fado"
+                },
+                {
+                    "OrderID": "206",
+                    "Freight": "33",
+                    "ShipAddress": "Calle Fado"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "4",
+            "LastName": "Martin",
+            "FirstName": "Patrick",
+            "Country": "UK",
+            "City": "London",
+            "PostalCode": "28666",
+            "Orders":[
+                {
+                    "OrderID": "308",
+                    "Freight": "55",
+                    "ShipAddress": "South Circular Road"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "5",
+            "LastName": "Brown",
+            "FirstName": "Sierra",
+            "Country": "US",
+            "City": "Boston",
+            "PostalCode": "28061",
+            "Orders":[
+                {
+                    "OrderID": "408",
+                    "Freight": "44",
+                    "ShipAddress": "Kihei Street"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "6",
+            "LastName": "Ramirez",
+            "FirstName": "Mark",
+            "Country": "US",
+            "City": "Washington",
+            "PostalCode": "28021",
+            "Orders":[
+                {
+                    "OrderID": "448",
+                    "Freight": "55",
+                    "ShipAddress": "Long Street"
+                }
+            ]
+        }
+    ]
+}
