@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns:core = "sap.ui.core" xmlns="sap.m">
+    <Panel id="panelEmpleados">
+                <Button id="btnShowCity" text="{i18n>showCity}" visible="{jsonVisibilidad>/visibleBtnShowCity}" press="onShowCity"></Button>
+                  <Button id="btnHideCity" text="{i18n>hideCity}" visible="{jsonVisibilidad>/visibleBtnHideCity}" press="onHideCity"></Button>
+                    <Table id="tableEmployee" items="{jsonEmployees>/Employees}">
+                    <columns>
+                        <Column visible="{jsonVisibilidad>/visibleID}" id="_IDGenColumn1" >
+                            <header>
+                                <Label id="_IDGenLabel1" text="{i18n>tableId}"/>
+                            </header>
+                        </Column>
+                        <Column visible="{jsonVisibilidad>/visibleName}" id="_IDGenColumn2" >
+                            <header>
+                                <Label id="_IDGenLabel2" text="{i18n>tableName}"/>
+                            </header>
+                        </Column>
+                        <Column visible="{jsonVisibilidad>/visiblePais}" id="_IDGenColumn3" >
+                            <header>
+                                <Label id="_IDGenLabel3" text="{i18n>tableCountry}"/>
+                            </header>
+                        </Column>
+                        <Column visible="{jsonVisibilidad>/visibleCiudad}" id="_IDGenColumn4" >
+                            <header>
+                                <Label id="_IDGenLabel4" text="{i18n>tableCity}"/>
+                            </header>
+                        </Column>
+                         <Column width="100px" id="_IDGenColumn5" >
+                            <header>
+                                <Label id="_IDGenLabel4X" text="{i18n>showDetails}"/>
+                            </header>
+                        </Column>
+                    </columns>
+                        <items>
+                        <ColumnListItem id="_IDGenColumnListItem1" type="Active" >
+                            <cells>
+                            <Label id="_IDGenLabel5" text="{jsonEmployees>EmployeeID}"/>
+                            <Label id="_IDGenLabel6" text="{jsonEmployees>LastName}, {jsonEmployees>FirstName}"/>
+                            <Label id="_IDGenLabel7" text="{jsonEmployees>Country}"/>
+                            <Label id="_IDGenLabel8" text="{jsonEmployees>City}"/>
+                            <core:Icon id="_IDGenLabel9" src="sap-icon://show" press="mostrarOrden"></core:Icon>
+                            </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <HBox id="ordersTable"></HBox>
+                </Panel>
+</core:FragmentDefinition>
