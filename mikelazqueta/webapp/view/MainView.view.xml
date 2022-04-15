@@ -51,7 +51,7 @@
                         </Column>
                     </columns>
                         <items>
-                        <ColumnListItem id="_IDGenColumnListItem1" type="Active" press="mostrarCP">
+                        <ColumnListItem id="_IDGenColumnListItem1" type="Active" press="mostrarOrden">
                             <cells>
                             <Label id="_IDGenLabel5" text="{jsonEmployees>EmployeeID}"/>
                             <Label id="_IDGenLabel6" text="{jsonEmployees>LastName}, {jsonEmployees>FirstName}"/>
@@ -61,6 +61,7 @@
                             </ColumnListItem>
                         </items>
                     </Table>
+                    <HBox id="ordersTable"></HBox>
                 </Panel>
                </HBox>
                </content>

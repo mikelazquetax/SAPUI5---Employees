@@ -32,6 +32,8 @@ sap.ui.define([
       
               }  */
 
+        
+
         return Controller.extend("mikelazqueta.mikelazqueta.controller.MainView", {
             onInit: function () {
                
@@ -77,6 +79,90 @@ sap.ui.define([
 
             },
 
+            mostrarOrden: function (evento){
+                var ordersTable = this.getView().byId("ordersTable")
+                ordersTable.destroyItems()
+                var itemPressed = evento.getSource()
+                var oContext = itemPressed.getBindingContext("jsonEmployees")
+
+                var objetoContext = oContext.getObject()
+                var orders = objetoContext.Orders
+                var orderItems = []
+
+                for (var i in orders){
+                    orderItems.push(new sap.m.ColumnListItem({
+                        cells : [
+                            new sap.m.Label({text: orders[i].OrderID}),
+                            new sap.m.Label({text: orders[i].Freight}),
+                            new sap.m.Label({text: orders[i].ShipAddress}),
+                        ]
+                    }))
+                }
+                var newTable = new sap.m.Table({
+                    width: "auto",
+                    columns: [
+                        new sap.m.Column({header: new sap.m.Label({text: "{i18n>OrderID}"})}),
+                        new sap.m.Column({header: new sap.m.Label({text: "{i18n>Freight}"})}),
+                        new sap.m.Column({header: new sap.m.Label({text: "{i18n>ShipAddress}"})})
+                    ],
+                    items: orderItems
+                }).addStyleClass("sapUiSmallMargin")
+
+                ordersTable.addItem(newTable)
+                /* Otra forma de hacer lo de arriba. 2º Table */
+
+                var newTableV2 = new sap.m.Table()
+                newTableV2.setWidth("auto");
+                newTableV2.addStyleClass("sapUiSmallMargin")
+
+                var columnOrderID = new sap.m.Column();
+                var labelOrderID = new sap.m.Label();
+                labelOrderID.bindProperty("text", "i18n>orderID")
+                columnOrderID.setHeader(labelOrderID);
+                newTableV2.addColumn(columnOrderID)
+
+                var columnFreight = new sap.m.Column();
+                var labelFreight = new sap.m.Label();
+                labelFreight.bindProperty("text", "i18n>Freight")
+                columnFreight.setHeader(labelFreight);
+                newTableV2.addColumn(columnFreight)
+
+                var columnShipAddress = new sap.m.Column();
+                var labelShipAddress = new sap.m.Label();
+                labelShipAddress.bindProperty("text", "i18n>ShipAddress")
+                columnShipAddress.setHeader(labelShipAddress);
+                newTableV2.addColumn(columnShipAddress)
+
+                var columnListItem = new sap.m.ColumnListItem()
+
+                var cellOrderID = new sap.m.Label()
+                cellOrderID.bindProperty("text", "jsonEmployees>OrderID")
+                columnListItem.addCell(cellOrderID)
+
+                var cellFreight = new sap.m.Label()
+                cellFreight.bindProperty("text", "jsonEmployees>Freight")
+                columnListItem.addCell(cellFreight)
+
+                var cellShip = new sap.m.Label()
+                cellShip.bindProperty("text", "jsonEmployees>ShipAddress")
+                columnListItem.addCell(cellShip)
+
+                var oBindingInfo = {
+                    model: 'jsonEmployees',
+                    path: 'Orders',
+                    template: columnListItem
+                }
+
+               
+                newTableV2.bindAggregation("items", oBindingInfo)
+                newTableV2.bindElement("jsonEmployees>" + oContext.getPath())
+                ordersTable.addItem(newTableV2)
+
+              },
+
+
+
+
             filtrar: function (){
                 var allData = this.getView().getModel("jsonCountries").getData() /* Obtenemos datos del modelo */
                 var buscado = this.byId("inputEmployees").getValue() /* Obtener valor del input */
@@ -102,15 +188,15 @@ sap.ui.define([
                 modeloAct.setProperty("/EmployeeID","")
                 modeloAct.setProperty("/CountryKey","")
             },
-            mostrarCP: function(e){
+/*             mostrarCP: function(e){
                 var allData = this.getView().getModel().getData()
-                var itemPressed = e.getSource() /* Obtenemos el item que se ha pulsado */
+                var itemPressed = e.getSource() /* Obtenemos el item que se ha pulsado 
                 var contextPressed = itemPressed.getBindingContext("jsonEmployees");
                 var objetoContext = contextPressed.getObject()
 
                 MessageToast.show(`Codigo Postal: ${objetoContext.PostalCode}`)
-
-            },
+                mostrarOrden()
+            }, */ 
             onShowCity: function(){
                 var oJSONModeloVisibilidad = this.getView().getModel("jsonVisibilidad")
                 oJSONModeloVisibilidad.setProperty("/visibleCiudad", true)
