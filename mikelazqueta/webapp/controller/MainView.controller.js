@@ -34,40 +34,27 @@ sap.ui.define([
 
         return Controller.extend("mikelazqueta.mikelazqueta.controller.MainView", {
             onInit: function () {
-                let oJSONModel = new sap.ui.model.json.JSONModel()
+               
                 let oView = this.getView()
-                let i18nBundle = oView.getModel("i18n").getResourceBundle()
 
-             /*    let oJSON = {
-                    employeeId: "12345",
-                    countryKey: "PT",
-                    listCountry: [
-                        {
-                            key: "US",
-                            text: i18nBundle.getText("countryUS")
-                        },
-                        {
-                            key: "UK",
-                            text: i18nBundle.getText("countryUK")
-                        },
-                        {
-                            key: "ES",
-                            text: i18nBundle.getText("countryES")
-                        },
-                        {
-                            key: "PT",
-                            text: i18nBundle.getText("countryPT")
-                        }
-                    ]
-                }; */
-               /*  oJSONModel.setData(oJSON) */
-               oJSONModel.loadData("./localService/mockdata/Employees.json", false);
+                let oJSONModelEmpl = new sap.ui.model.json.JSONModel()
+                oJSONModelEmpl.loadData("./localService/mockdata/Employees.json", false);
+                oView.setModel(oJSONModelEmpl, "jsonEmployees")
 
-                oJSONModel.attachRequestCompleted(function(oEventModel){
-                    console.log(JSON.stringify(oJSONModel.getData()))
+                let oJSONModelCountries = new sap.ui.model.json.JSONModel()
+                oJSONModelCountries.loadData("./localService/mockdata/Countries.json", false);
+                oView.setModel(oJSONModelCountries, "jsonCountries")
+
+                let oJSONModelVisibilidad = new sap.ui.model.json.JSONModel({
+                    visibleID: true,
+                    visibleName: true,
+                    visiblePais: true,
+                    visibleCiudad: false,
+                    visibleBtnShowCity: true,
+                    visibleBtnHideCity: false
                 })
+                oView.setModel(oJSONModelVisibilidad, "jsonVisibilidad")
 
-                oView.setModel(oJSONModel)
             },
             /*          validacion: validacionInput /* Invocamos funcion privada */
             validacion: function validacionInput() {
@@ -91,7 +78,7 @@ sap.ui.define([
             },
 
             filtrar: function (){
-                var allData = this.getView().getModel().getData() /* Obtenemos datos del modelo */
+                var allData = this.getView().getModel("jsonCountries").getData() /* Obtenemos datos del modelo */
                 var buscado = this.byId("inputEmployees").getValue() /* Obtener valor del input */
 
 
@@ -111,18 +98,30 @@ sap.ui.define([
             },
 
             clearfiltrar: function(){
-                var modeloAct = this.getView().getModel()
+                var modeloAct = this.getView().getModel("jsonCountries")
                 modeloAct.setProperty("/EmployeeID","")
                 modeloAct.setProperty("/CountryKey","")
             },
             mostrarCP: function(e){
                 var allData = this.getView().getModel().getData()
                 var itemPressed = e.getSource() /* Obtenemos el item que se ha pulsado */
-                var contextPressed = itemPressed.getBindingContext();
+                var contextPressed = itemPressed.getBindingContext("jsonEmployees");
                 var objetoContext = contextPressed.getObject()
 
                 MessageToast.show(`Codigo Postal: ${objetoContext.PostalCode}`)
 
+            },
+            onShowCity: function(){
+                var oJSONModeloVisibilidad = this.getView().getModel("jsonVisibilidad")
+                oJSONModeloVisibilidad.setProperty("/visibleCiudad", true)
+                oJSONModeloVisibilidad.setProperty("/visibleBtnShowCity", false)
+                oJSONModeloVisibilidad.setProperty("/visibleBtnHideCity", true)
+            },
+            onHideCity: function(){
+                var oJSONModeloVisibilidad = this.getView().getModel("jsonVisibilidad")
+                oJSONModeloVisibilidad.setProperty("/visibleCiudad", false)
+                oJSONModeloVisibilidad.setProperty("/visibleBtnShowCity", true)
+                oJSONModeloVisibilidad.setProperty("/visibleBtnHideCity", false)
             }
         });
     });

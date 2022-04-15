@@ -1,25 +1,5 @@
 {
-    "EmployeeID": "",
-    "CountryKey": "",
-    "ListCountry": [
-        {
-            "Key": "US",
-            "Text": "United States"
-        },
-        {
-            "Key": "UK",
-            "Text": "United Kingdom"
-        },
-        {
-            "Key": "ES",
-            "Text": "Spain"
-        },
-        {
-            "Key": "PT",
-            "Text": "Portugal"
-        }
-    ],
-    "Employees":[
+    "Employees": [
         {
             "EmployeeID": "1",
             "LastName": "García Lopez",
@@ -27,7 +7,7 @@
             "Country": "ES",
             "City": "Madrid",
             "PostalCode": "28021",
-            "Orders":[
+            "Orders": [
                 {
                     "OrderID": "208",
                     "Freight": "65",
@@ -47,7 +27,7 @@
             "Country": "ES",
             "City": "Madrid",
             "PostalCode": "14490",
-            "Orders":[
+            "Orders": [
                 {
                     "OrderID": "209",
                     "Freight": "67",
@@ -62,7 +42,7 @@
             "Country": "PT",
             "City": "Lisboa",
             "PostalCode": "28000",
-            "Orders":[
+            "Orders": [
                 {
                     "OrderID": "204",
                     "Freight": "33",
@@ -87,7 +67,7 @@
             "Country": "UK",
             "City": "London",
             "PostalCode": "28666",
-            "Orders":[
+            "Orders": [
                 {
                     "OrderID": "308",
                     "Freight": "55",
@@ -102,7 +82,7 @@
             "Country": "US",
             "City": "Boston",
             "PostalCode": "28061",
-            "Orders":[
+            "Orders": [
                 {
                     "OrderID": "408",
                     "Freight": "44",
@@ -117,7 +97,7 @@
             "Country": "US",
             "City": "Washington",
             "PostalCode": "28021",
-            "Orders":[
+            "Orders": [
                 {
                     "OrderID": "448",
                     "Freight": "55",
