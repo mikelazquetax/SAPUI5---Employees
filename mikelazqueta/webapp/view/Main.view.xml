@@ -10,7 +10,7 @@
             <pages>
                 <Page id="_IDGenPage1" showHeader="false">
                     <content>
-                        <f:FlexibleColumnLayout id="fcl" backgroundDesign="Solid" layout="OneColumn">
+                        <f:FlexibleColumnLayout id="fcl" backgroundDesign="Solid" layout="{jsonLayouts>/ActiveKey}">
                             <f:beginColumnPages>
                             <mvc:XMLView id="masterEmployee" viewName="mikelazqueta.mikelazqueta.view.MasterEmployee"></mvc:XMLView>
                             </f:beginColumnPages>
@@ -23,6 +23,16 @@
                             </f:endColumnPages>
                     </f:FlexibleColumnLayout>
                     </content>
+                    <footer>
+                        <Toolbar id="_IDGenToolbar1" >
+                        <Label id="_IDGenLabel1" text="{i18n>layout}" class="sapUiSmallMargin" > </Label>
+                        <Select id="_IDGenSelect1" items="{jsonLayouts>/Layout}" selectedKey="{jsonLayouts>/ActiveKey}">
+                            <core:Item id="item_gen" key="{jsonLayouts>Key}" text="{jsonLayouts>Text}"></core:Item>
+                        </Select>
+                        
+                       
+                        </Toolbar>
+                    </footer>
                 </Page>
             </pages>
         </App>

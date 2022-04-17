@@ -36,7 +36,7 @@ sap.ui.define([
 
         return Controller.extend("mikelazqueta.mikelazqueta.controller.MasterEmployee", {
             onInit: function () {
-               
+               this._bus = sap.ui.getCore().getEventBus()
 
             },
             /*          validacion: validacionInput /* Invocamos funcion privada */
@@ -207,6 +207,11 @@ sap.ui.define([
                 oJSONModeloVisibilidad.setProperty("/visibleCiudad", false)
                 oJSONModeloVisibilidad.setProperty("/visibleBtnShowCity", true)
                 oJSONModeloVisibilidad.setProperty("/visibleBtnHideCity", false)
+            },
+
+            mostrarEmpleado: function(evento){
+                var path = evento.getSource().getBindingContext("jsonEmployees").getPath()
+                this._bus.publish("flexible", "mostrarEmpleado", path)
             }
         });
     });

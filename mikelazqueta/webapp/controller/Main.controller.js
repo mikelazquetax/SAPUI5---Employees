@@ -15,6 +15,10 @@ sap.ui.define([
             oJSONModelCountries.loadData("./localService/mockdata/Countries.json", false);
             oView.setModel(oJSONModelCountries, "jsonCountries")
 
+            let oJSONLayouts = new sap.ui.model.json.JSONModel()
+            oJSONLayouts.loadData("./localService/mockdata/Layout.json", false);
+            oView.setModel(oJSONLayouts, "jsonLayouts")
+
             let oJSONModelVisibilidad = new sap.ui.model.json.JSONModel({
                 visibleID: true,
                 visibleName: true,
@@ -25,8 +29,14 @@ sap.ui.define([
             })
             oView.setModel(oJSONModelVisibilidad, "jsonVisibilidad")
 
+            this._bus = sap.ui.getCore().getEventBus()
+            this._bus.subscribe("flexible", "mostrarEmpleado", this.mostrarDetalleEmpl, this)
+        },
+        mostrarDetalleEmpl: function(category, nameEvent, path){
+            var detailView = this.getView().byId("detailEmployeeView")
+            detailView.bindElement("jsonEmployees>" + path)
+            this.getView().getModel("jsonLayouts").setProperty("/ActiveKey", "TwoColumnsMidExpanded")
         }
-
 
     });
 
