@@ -80,7 +80,7 @@ sap.ui.define([
             },
 
             mostrarOrden: function (evento){
-                var ordersTable = this.getView().byId("ordersTable")
+           /*      var ordersTable = this.getView().byId("ordersTable")
                 ordersTable.destroyItems()
                 var itemPressed = evento.getSource()
                 var oContext = itemPressed.getBindingContext("jsonEmployees")
@@ -108,9 +108,9 @@ sap.ui.define([
                     items: orderItems
                 }).addStyleClass("sapUiSmallMargin")
 
-                ordersTable.addItem(newTable)
+                ordersTable.addItem(newTable) */
                 /* Otra forma de hacer lo de arriba. 2º Table */
-
+/* 
                 var newTableV2 = new sap.m.Table()
                 newTableV2.setWidth("auto");
                 newTableV2.addStyleClass("sapUiSmallMargin")
@@ -156,11 +156,29 @@ sap.ui.define([
                
                 newTableV2.bindAggregation("items", oBindingInfo)
                 newTableV2.bindElement("jsonEmployees>" + oContext.getPath())
-                ordersTable.addItem(newTableV2)
+                ordersTable.addItem(newTableV2) */
+
+                /* DIALOGO A PARTIR DE AQUI*/
+
+                var iconPressed = evento.getSource();
+
+                /* cogemos el modelo del objeto pulsado */
+
+                var oEvento = iconPressed.getBindingContext("jsonEmployees");
+
+                if (!this._oDialogOrders){
+                this._oDialogOrders = sap.ui.xmlfragment("mikelazqueta.mikelazqueta.fragment.DialogOrders", this)
+                this.getView().addDependent(this._oDialogOrders)
+                }
+
+                this._oDialogOrders.bindElement("jsonEmployees>" + oEvento.getPath());
+                this._oDialogOrders.open()
 
               },
 
-
+              cerrarModal: function(){
+                  this._oDialogOrders.close()
+              },
 
 
             filtrar: function (){
