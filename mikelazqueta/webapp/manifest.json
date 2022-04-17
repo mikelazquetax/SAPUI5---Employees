@@ -89,28 +89,35 @@
       },
       "routes": [
         {
-          "name": "RouteMainView",
+          "name": "RouteMain",
           "pattern": "RouteMainView",
           "target": [
-            "TargetMainView"
+            "TargetMain"
           ]
         }
       ],
       "targets": {
-        "TargetMainView": {
+        "TargetMain": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "MainView",
           "viewName": "MainView"
-        }
+        },
+        "TargetMasterEmployee": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "MasterEmployee",
+            "viewName": "MasterEmployee"
+          }
       }
     },
     "rootView": {
-      "viewName": "mikelazqueta.mikelazqueta.view.MainView",
+      "viewName": "mikelazqueta.mikelazqueta.view.Main",
       "type": "XML",
       "async": true,
-      "id": "MainView"
+      "id": "Main"
     }
   }
 }

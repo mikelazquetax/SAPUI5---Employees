@@ -1,16 +1,14 @@
 <mvc:View
-    controllerName="mikelazqueta.mikelazqueta.controller.MainView"
+    controllerName="mikelazqueta.mikelazqueta.controller.MasterEmployee"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
 >
-    <Shell id="shell">
-        <App id="app">
-            <pages>
+   
                 <Page id="page" title="{i18n>title}">
                <content>
-               <HBox id="hbox" class="hbox">
+               <HBox id="hbox" class="hbox" wrap="Wrap">
                 <Label id="labelEmployees" text="{i18n>LabelEmployee}" class="sapUiSmallMargin etiqueta"></Label>
                 <Input id="inputEmployees" value="{jsonCountries>/EmployeeID}" maxLength="6" width="200px" class="sapUiSmallMarginEnd" />
                 <Label id="labelCountry" visible="true" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin"  />
@@ -26,7 +24,5 @@
                 <core:Fragment fragmentName="mikelazqueta.mikelazqueta.fragment.TableEmployee" type="XML"/>
                </content>
                 </Page>
-            </pages>
-        </App>
-    </Shell>
+
 </mvc:View>
