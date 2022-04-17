@@ -173,7 +173,7 @@ sap.ui.define([
 
                 this._oDialogOrders.bindElement("jsonEmployees>" + oEvento.getPath());
                 this._oDialogOrders.open()
-
+ 
               },
 
               cerrarModal: function(){
