@@ -29,7 +29,9 @@ sap.ui.define([
             var incidenceModel = this.getView().getModel("incidenceModel");
             var odata = incidenceModel.getData();
             var index = odata.length
-            odata.push({ index : index + 1 });
+            
+
+            odata.push({ index : index + 1, _ValidateDate: false });
             
             newIncidence.bindElement("incidenceModel>/" + index);
             tableIncidence.addContent(newIncidence)
@@ -59,12 +61,32 @@ sap.ui.define([
         function updateIncidenceCreationDate(evento){
             var context = evento.getSource().getBindingContext("incidenceModel")
             var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
-            contextObjeto.CreationDateX = true
+            
+            if(!evento.getSource().isValidValue()){
+                contextObjeto._ValidateDate = false
+                contextObjeto.CreationDateState = "Error"
+            }else{
+                contextObjeto.CreationDateX = true
+                contextObjeto._ValidateDate = true
+                contextObjeto.CreationDateState = "None"
+            }
+            
+         context.getModel().refresh()
         };
 
         function updateIncidenceReason(evento){
+
             var context = evento.getSource().getBindingContext("incidenceModel")
             var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
+          
+            if(evento.getSource().getValue()){
+                contextObjeto.ReasonX = true;
+                contextObjeto.ReasonState = "None"
+            }else{
+                contextObjeto.ReasonState = "Error"
+            }
+          
+          
             contextObjeto.ReasonX = true
         };
 
