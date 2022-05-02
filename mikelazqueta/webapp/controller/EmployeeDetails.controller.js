@@ -2,9 +2,10 @@
 
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "mikelazqueta/mikelazqueta/model/formatter"
+    "mikelazqueta/mikelazqueta/model/formatter",
+    "sap/m/MessageBox"
 
-], function(Controller, formatter){
+], function(Controller, formatter, MessageBox){
    
 
         function onInit(){
@@ -61,10 +62,21 @@ sap.ui.define([
         function updateIncidenceCreationDate(evento){
             var context = evento.getSource().getBindingContext("incidenceModel")
             var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
-            
+            var oResourceBundle = this.getView().getModel("i18n").getResourceBundle()
+
+
             if(!evento.getSource().isValidValue()){
                 contextObjeto._ValidateDate = false
                 contextObjeto.CreationDateState = "Error"
+                MessageBox.error(oResourceBundle.getText("errorCreationDateValue"),{
+                    title: 'Error',
+                    onClose: null,
+                    styleClass: "",
+                    actions: MessageBox.Action.Close,
+                    emphasizedAction: null,
+                    initialFocus: null,
+                    textDirection: sap.ui.core.TextDirection.Inherit
+                })
             }else{
                 contextObjeto.CreationDateX = true
                 contextObjeto._ValidateDate = true
