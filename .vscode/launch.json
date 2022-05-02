@@ -2,90 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Start mikelazqueta",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "npx",
-      "cwd": "${workspaceFolder}/mikelazqueta",
-      "windows": {
-        "runtimeExecutable": "npx.cmd"
-      },
-      "runtimeArgs": [
-        "fiori",
-        "run"
-      ],
-      "args": [
-        "--open",
-        "test/flpSandbox.html#mikelazquetamikelazqueta-display"
-      ],
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "outputCapture": "std",
-      "port": 9229,
-      "env": {
-        "DEBUG": "--inspect",
-        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/mikelaz/mikelazqueta\"}"
-      }
-    },
-    {
-      "name": "Start mikelazqueta Mock",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/mikelazqueta",
-      "runtimeExecutable": "npx",
-      "windows": {
-        "runtimeExecutable": "npx.cmd"
-      },
-      "runtimeArgs": [
-        "fiori",
-        "run"
-      ],
-      "args": [
-        "--config",
-        "./ui5-mock.yaml",
-        "--open",
-        "test/flpSandbox.html#mikelazquetamikelazqueta-display"
-      ],
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "outputCapture": "std",
-      "port": 9229,
-      "env": {
-        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/mikelaz/mikelazqueta\"}"
-      }
-    },
-    {
-      "name": "Start mikelazqueta Local",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/mikelazqueta",
-      "runtimeExecutable": "npx",
-      "windows": {
-        "runtimeExecutable": "npx.cmd"
-      },
-      "runtimeArgs": [
-        "fiori",
-        "run"
-      ],
-      "args": [
-        "--config",
-        "./ui5-local.yaml",
-        "--open",
-        "test/flpSandbox.html#mikelazquetamikelazqueta-display"
-      ],
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "outputCapture": "std",
-      "port": 9229,
-      "env": {
-        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/mikelaz/mikelazqueta\"}"
-      }
-    },
-    {
-      "name": "mikelazqueta-config1",
+      "name": "Run Employees",
       "cwd": "${workspaceFolder}/mikelazqueta",
       "runtimeArgs": [
         "fiori",
@@ -105,8 +22,9 @@
       "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std",
       "env": {
-        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false",
-        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/mikelaz/mikelazqueta\"}"
+        "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/mikelaz/mikelazqueta\"}",
+        "FIORI_TOOLS_BACKEND_CONFIG": "[{\"destination\":\"Northwind\",\"path\":\"/v2\"},{\"destination\":\"logaligroupERP\",\"path\":\"/sap\"}]",
+        "FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
       }
     }
   ],

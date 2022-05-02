@@ -8,7 +8,7 @@ sap.ui.define([
    
 
         function onInit(){
-
+            this._bus = sap.ui.getCore().getEventBus()
         };
 /*         crearIncidencia: function(){
             var tableIncidence = this.getView().byId("tableIncidence");
@@ -38,31 +38,51 @@ sap.ui.define([
         };
 
         function borrarIncidencia(ev){
-            var tablaDeIncidencias = this.getView().byId('tableIncidence')
-            var filaDeIncidencias = ev.getSource().getParent().getParent()
-            var incidenceModel = this.getView().getModel("incidenceModel");
-            var data = incidenceModel.getData()
-            var contextObjeto = filaDeIncidencias.getBindingContext("incidenceModel")
 
-            data.splice(data.index-1,1)
-            for(var i in data){
-                data[i].index = parseInt(i) + 1
-            }
-            incidenceModel.refresh()
-            tablaDeIncidencias.removeContent(filaDeIncidencias)
 
-            for(var j in tablaDeIncidencias.getContent()){
-                tablaDeIncidencias.getContent()[j].bindElement("incidenceModel>/"+j)
-            }
+            var contextObject = ev.getSource().getBindingContext("incidenceModel").getObject()
+            this._bus.publish("incidence", "borrarIncidencia", {
+                IncidenceId: contextObject.IncidenceId,
+                SapId: contextObject.SapId,
+                EmployeeId : contextObject.EmployeeId
+            })
 
         };
+
+        function onSaveIncidence(evento){
+            var filaDeIncidencias = evento.getSource().getParent().getParent();
+            var incidenceRow = filaDeIncidencias.getBindingContext("incidenceModel");
+            var temp = incidenceRow.sPath.replace('/', '')
+            this._bus.publish("incidence", "onSaveIncidence",{ incidenceRow : incidenceRow.sPath.replace('/', '') })
+        };
+
+        function updateIncidenceCreationDate(evento){
+            var context = evento.getSource().getBindingContext("incidenceModel")
+            var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
+            contextObjeto.CreationDateX = true
+        };
+
+        function updateIncidenceReason(evento){
+            var context = evento.getSource().getBindingContext("incidenceModel")
+            var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
+            contextObjeto.ReasonX = true
+        };
+
+        function updateIncidenceType(evento){
+            var context = evento.getSource().getBindingContext("incidenceModel")
+            var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
+            contextObjeto.TypeX = true
+        }
 
         var EmployeeDetails = Controller.extend("mikelazqueta.mikelazqueta.controller.EmployeeDetails",{});
         EmployeeDetails.prototype.onInit = onInit
         EmployeeDetails.prototype.crearIncidencia = crearIncidencia
         EmployeeDetails.prototype.Formatter = formatter
         EmployeeDetails.prototype.borrarIncidencia = borrarIncidencia
-
+        EmployeeDetails.prototype.onSaveIncidence = onSaveIncidence
+        EmployeeDetails.prototype.updateIncidenceCreationDate = updateIncidenceCreationDate
+        EmployeeDetails.prototype.updateIncidenceReason = updateIncidenceReason
+        EmployeeDetails.prototype.updateIncidenceType = updateIncidenceType
         return EmployeeDetails
     });
 

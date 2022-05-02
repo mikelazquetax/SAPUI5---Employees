@@ -64,7 +64,7 @@ sap.ui.define([
            /*      var ordersTable = this.getView().byId("ordersTable")
                 ordersTable.destroyItems()
                 var itemPressed = evento.getSource()
-                var oContext = itemPressed.getBindingContext("jsonEmployees")
+                var oContext = itemPressed.getBindingContext("odataNorthwind")
 
                 var objetoContext = oContext.getObject()
                 var orders = objetoContext.Orders
@@ -117,26 +117,26 @@ sap.ui.define([
                 var columnListItem = new sap.m.ColumnListItem()
 
                 var cellOrderID = new sap.m.Label()
-                cellOrderID.bindProperty("text", "jsonEmployees>OrderID")
+                cellOrderID.bindProperty("text", "odataNorthwind>OrderID")
                 columnListItem.addCell(cellOrderID)
 
                 var cellFreight = new sap.m.Label()
-                cellFreight.bindProperty("text", "jsonEmployees>Freight")
+                cellFreight.bindProperty("text", "odataNorthwind>Freight")
                 columnListItem.addCell(cellFreight)
 
                 var cellShip = new sap.m.Label()
-                cellShip.bindProperty("text", "jsonEmployees>ShipAddress")
+                cellShip.bindProperty("text", "odataNorthwind>ShipAddress")
                 columnListItem.addCell(cellShip)
 
                 var oBindingInfo = {
-                    model: 'jsonEmployees',
+                    model: 'odataNorthwind',
                     path: 'Orders',
                     template: columnListItem
                 }
 
                
                 newTableV2.bindAggregation("items", oBindingInfo)
-                newTableV2.bindElement("jsonEmployees>" + oContext.getPath())
+                newTableV2.bindElement("odataNorthwind>" + oContext.getPath())
                 ordersTable.addItem(newTableV2) */
 
                 /* DIALOGO A PARTIR DE AQUI*/
@@ -145,14 +145,14 @@ sap.ui.define([
 
                 /* cogemos el modelo del objeto pulsado */
 
-                var oEvento = iconPressed.getBindingContext("jsonEmployees");
+                var oEvento = iconPressed.getBindingContext("odataNorthwind");
 
                 if (!this._oDialogOrders){
                 this._oDialogOrders = sap.ui.xmlfragment("mikelazqueta.mikelazqueta.fragment.DialogOrders", this)
                 this.getView().addDependent(this._oDialogOrders)
                 }
 
-                this._oDialogOrders.bindElement("jsonEmployees>" + oEvento.getPath());
+                this._oDialogOrders.bindElement("odataNorthwind>" + oEvento.getPath());
                 this._oDialogOrders.open()
  
               },
@@ -190,7 +190,7 @@ sap.ui.define([
 /*             mostrarCP: function(e){
                 var allData = this.getView().getModel().getData()
                 var itemPressed = e.getSource() /* Obtenemos el item que se ha pulsado 
-                var contextPressed = itemPressed.getBindingContext("jsonEmployees");
+                var contextPressed = itemPressed.getBindingContext("odataNorthwind");
                 var objetoContext = contextPressed.getObject()
 
                 MessageToast.show(`Codigo Postal: ${objetoContext.PostalCode}`)
@@ -210,7 +210,7 @@ sap.ui.define([
             },
 
             mostrarEmpleado: function(evento){
-                var path = evento.getSource().getBindingContext("jsonEmployees").getPath()
+                var path = evento.getSource().getBindingContext("odataNorthwind").getPath()
                 this._bus.publish("flexible", "mostrarEmpleado", path)
             }
         });

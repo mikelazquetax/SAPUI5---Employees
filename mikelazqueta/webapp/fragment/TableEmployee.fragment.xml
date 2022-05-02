@@ -2,7 +2,7 @@
     <Panel id="panelEmpleados">
                 <Button id="btnShowCity" text="{i18n>showCity}" visible="{jsonVisibilidad>/visibleBtnShowCity}" press="onShowCity"></Button>
                   <Button id="btnHideCity" text="{i18n>hideCity}" visible="{jsonVisibilidad>/visibleBtnHideCity}" press="onHideCity"></Button>
-                    <Table id="tableEmployee" items="{jsonEmployees>/Employees}">
+                    <Table id="tableEmployee" items="{odataNorthwind>/Employees}">
                     <columns>
                         <Column visible="{jsonVisibilidad>/visibleID}" id="_IDGenColumn1" >
                             <header>
@@ -33,10 +33,10 @@
                         <items>
                         <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="mostrarEmpleado" >
                             <cells>
-                            <Label id="_IDGenLabel5" text="{jsonEmployees>EmployeeID}"/>
-                            <Label id="_IDGenLabel6" text="{jsonEmployees>LastName}, {jsonEmployees>FirstName}"/>
-                            <Label id="_IDGenLabel7" text="{jsonEmployees>Country}"/>
-                            <Label id="_IDGenLabel8" text="{jsonEmployees>City}"/>
+                            <Label id="_IDGenLabel5" text="{odataNorthwind>EmployeeID}"/>
+                            <Label id="_IDGenLabel6" text="{odataNorthwind>LastName}, {odataNorthwind>FirstName}"/>
+                            <Label id="_IDGenLabel7" text="{odataNorthwind>Country}"/>
+                            <Label id="_IDGenLabel8" text="{odataNorthwind>City}"/>
                             <core:Icon id="_IDGenLabel9" src="sap-icon://show" press="mostrarOrden"></core:Icon>
                             </cells>
                             </ColumnListItem>
