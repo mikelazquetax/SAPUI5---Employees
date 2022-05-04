@@ -1,7 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+   "sap/m/MessageBox" 
 
-], function (Controller) {
+], function (Controller,MessageBox) {
     return Controller.extend("mikelazqueta.mikelazqueta.controller.Main", {
 
         onBeforeRendering: function () {
@@ -83,7 +84,8 @@ sap.ui.define([
                 this.getView().getModel("incidenceModel").create("/IncidentsSet", body, {
                     success: function () {
                         this.onReadODataIncidence.bind(this)(employeeId)
-                        sap.m.MessageToast.show(oResourceBundle.getText("odataSaveOK"));
+                       // sap.m.MessageToast.show(oResourceBundle.getText("odataSaveOK"));
+                       MessageBox.success(oResourceBundle.getText("odataSaveOK"))
                     }.bind(this),
                     error: function (e) {
                         sap.m.MessageToast.show(oResourceBundle.getText("odataSaveKO"));
