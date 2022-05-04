@@ -7,7 +7,7 @@
                     ${incidenceModel>Type}==='2' ? 'sap-icon://decline' : '' }"></core:Icon>
 <Title text="{i18n>incidence} {= parseInt(${incidenceModel>IncidenceId})} {path: 'incidenceModel>CreationDate', formatter:'.Formatter.dateFormateo'}   "></Title>
 <ToolbarSpacer />
-<Button icon="sap-icon://save" press="onSaveIncidence"></Button>
+<Button icon="sap-icon://save" press="onSaveIncidence" enabled="{= ${incidenceModel>EnabledSave} === true}"></Button>
 <core:Icon src="delete" press="borrarIncidencia"></core:Icon>
 </Toolbar>
 </headerToolbar>

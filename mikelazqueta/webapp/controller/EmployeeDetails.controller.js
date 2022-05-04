@@ -32,7 +32,7 @@ sap.ui.define([
             var index = odata.length
             
 
-            odata.push({ index : index + 1, _ValidateDate: false });
+            odata.push({ index : index + 1, _ValidateDate: false, EnabledSave: false });
             
             newIncidence.bindElement("incidenceModel>/" + index);
             tableIncidence.addContent(newIncidence)
@@ -83,6 +83,11 @@ sap.ui.define([
                 contextObjeto.CreationDateState = "None"
             }
             
+            if(evento.getSource().isValidValue() && contextObjeto.Reason){
+                contextObjeto.EnabledSave = true
+            }else{
+                contextObjeto.EnabledSave = false
+            }
          context.getModel().refresh()
         };
 
@@ -98,14 +103,28 @@ sap.ui.define([
                 contextObjeto.ReasonState = "Error"
             }
           
-          
+           if(contextObjeto._ValidateDate && evento.getSource().getValue()){
+               contextObjeto.EnabledSave = true
+           }else{
+               contextObjeto.EnabledSave = false
+           }
             contextObjeto.ReasonX = true
         };
 
         function updateIncidenceType(evento){
             var context = evento.getSource().getBindingContext("incidenceModel")
             var contextObjeto = context.getObject() //objeto que contiene la incidencia que se actualiza
+
+            if(contextObjeto._ValidateDate && contextObjeto.Reason){
+                contextObjeto.EnabledSave = true
+            }else{
+                contextObjeto.EnabledSave = false
+            }
+
+
+
             contextObjeto.TypeX = true
+            context.getModel().refresh()
         }
 
         var EmployeeDetails = Controller.extend("mikelazqueta.mikelazqueta.controller.EmployeeDetails",{});
