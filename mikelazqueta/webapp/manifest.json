@@ -117,7 +117,7 @@
             "routes": [
                 {
                     "name": "RouteMain",
-                    "pattern": "RouteMainView",
+                    "pattern": "",
                     "target": [
                         "TargetMain"
                     ]
@@ -128,8 +128,8 @@
                     "viewType": "XML",
                     "transition": "slide",
                     "clearControlAggregation": false,
-                    "viewId": "MainView",
-                    "viewName": "MainView"
+                    "viewId": "Main",
+                    "viewName": "Main"
                 },
                 "TargetMasterEmployee": {
                     "viewType": "XML",
@@ -141,10 +141,10 @@
             }
         },
         "rootView": {
-            "viewName": "mikelazqueta.mikelazqueta.view.Main",
+            "viewName": "mikelazqueta.mikelazqueta.view.App",
             "type": "XML",
             "async": true,
-            "id": "Main"
+            "id": "app"
         }
     }
 }
