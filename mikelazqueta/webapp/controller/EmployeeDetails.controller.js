@@ -127,10 +127,16 @@ sap.ui.define([
             contextObjeto.EnabledSave = false
         }
 
-
-
         contextObjeto.TypeX = true
         context.getModel().refresh()
+    };
+
+    function toOrderDetails(evento){
+        var orderID = evento.getSource().getBindingContext("odataNorthwind").getObject().OrderID
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this)
+        oRouter.navTo("RouteOrderDetails",{
+            OrderID: orderID
+        })
     }
 
     var EmployeeDetails = Controller.extend("mikelazqueta.mikelazqueta.controller.EmployeeDetails", {});
@@ -142,6 +148,7 @@ sap.ui.define([
     EmployeeDetails.prototype.updateIncidenceCreationDate = updateIncidenceCreationDate
     EmployeeDetails.prototype.updateIncidenceReason = updateIncidenceReason
     EmployeeDetails.prototype.updateIncidenceType = updateIncidenceType
+    EmployeeDetails.prototype.toOrderDetails = toOrderDetails
     return EmployeeDetails
 });
 
