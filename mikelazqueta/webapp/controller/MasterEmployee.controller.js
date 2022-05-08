@@ -1,6 +1,7 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/model/Filter",
+    /* "sap/ui/core/mvc/Controller", */
+    "mikelazqueta/mikelazqueta/controller/Base.controller",
+   "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/m/MessageToast"
 ],
@@ -9,7 +10,7 @@ sap.ui.define([
      * @param {typeof sap.ui.model.Filter} Filter
      * @param {typeof sap.ui.model.FilterOperator} FilterOperator
      */
-    function (Controller, Filter, FilterOperator, MessageToast) {
+    function (Base, Filter, FilterOperator, MessageToast) {
         "use strict";
 
         /*       function validacionInput() { ZONA PRIVADA Y MODULARIZACION
@@ -34,7 +35,7 @@ sap.ui.define([
 
         
 
-        return Controller.extend("mikelazqueta.mikelazqueta.controller.MasterEmployee", {
+        return Base.extend("mikelazqueta.mikelazqueta.controller.MasterEmployee", {
             onInit: function () {
                this._bus = sap.ui.getCore().getEventBus()
 
@@ -214,12 +215,12 @@ sap.ui.define([
                 this._bus.publish("flexible", "mostrarEmpleado", path)
             },
 
-            toOrderDetails: function(evento){
+      /*       toOrderDetails: function(evento){
                 var orderID = evento.getSource().getBindingContext("odataNorthwind").getObject().OrderID
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(this)
                 oRouter.navTo("RouteOrderDetails", {
                     OrderID: orderID
                 })
-            }
+            } */
         });
     });

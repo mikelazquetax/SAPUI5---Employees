@@ -1,11 +1,12 @@
 
 
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    /* "sap/ui/core/mvc/Controller", */
+    "mikelazqueta/mikelazqueta/controller/Base.controller",
     "mikelazqueta/mikelazqueta/model/formatter",
     "sap/m/MessageBox"
 
-], function (Controller, formatter, MessageBox) {
+], function (Base, formatter, MessageBox) {
 
 
     function onInit() {
@@ -131,15 +132,9 @@ sap.ui.define([
         context.getModel().refresh()
     };
 
-    function toOrderDetails(evento){
-        var orderID = evento.getSource().getBindingContext("odataNorthwind").getObject().OrderID
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(this)
-        oRouter.navTo("RouteOrderDetails",{
-            OrderID: orderID
-        })
-    }
 
-    var EmployeeDetails = Controller.extend("mikelazqueta.mikelazqueta.controller.EmployeeDetails", {});
+
+    var EmployeeDetails = Base.extend("mikelazqueta.mikelazqueta.controller.EmployeeDetails", {});
     EmployeeDetails.prototype.onInit = onInit
     EmployeeDetails.prototype.crearIncidencia = crearIncidencia
     EmployeeDetails.prototype.Formatter = formatter
@@ -148,7 +143,7 @@ sap.ui.define([
     EmployeeDetails.prototype.updateIncidenceCreationDate = updateIncidenceCreationDate
     EmployeeDetails.prototype.updateIncidenceReason = updateIncidenceReason
     EmployeeDetails.prototype.updateIncidenceType = updateIncidenceType
-    EmployeeDetails.prototype.toOrderDetails = toOrderDetails
+/*     EmployeeDetails.prototype.toOrderDetails = toOrderDetails */
     return EmployeeDetails
 });
 
