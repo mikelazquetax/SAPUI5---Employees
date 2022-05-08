@@ -5,6 +5,7 @@
     xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
+    xmlns:sc="mikelazqueta.mikelazqueta.control"
     >
 
     <Page >
@@ -54,6 +55,10 @@
             </f:formContainers>
          
          </f:Form>
+         <FlexBox class="sapUiTinyMarginTop">
+            <sc:Signature id="signature"></sc:Signature>
+            <Button text="{i18n>clear}" press="onClearSignature" class="sapUiTinyMarginBegin"></Button>
+         </FlexBox>
         </l:Grid>
         </Panel>
     </content>

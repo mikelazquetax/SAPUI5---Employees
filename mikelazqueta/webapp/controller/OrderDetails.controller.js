@@ -28,6 +28,11 @@ sap.ui.define([
                 oRouter.navTo("RouteMain", true) //Si el usuario llega directamente a la vista de los detalles sin pasar por la vista principal y luego quiere ir a dicha vista
             }
 
+        },
+
+        onClearSignature: function(){
+            var signature = this.byId("signature")
+            signature.clear()
         }
 
 
